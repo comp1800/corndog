@@ -90,10 +90,8 @@
                         //console.log(doc.data().fields.name);
                         var id = doc.id;  //document id of that webcam
                         var name = doc.data().fields.name;
-                        var str = '<p> ${name} </p>';
-                        console.log(str);
                         //$('#webcams-go-here').append($('<p id = ${id}> ${name} </p>'));
-                        //$("#webcams-go-here").append("<p id='" + id + "'>" + name + "</p>");
+                        $("#webcams-go-here").append("<p style='cursor:pointer' id='" + id + "'>" + name + "</p>");
                         addWebcamListener(id);
                     })
                 })

@@ -54,6 +54,7 @@
         <h1 class="display-4"> Hello, <span id="username">CST!</span> </h1>
         <h1> You are now logged in. </h1>
         <div id="details-go-here"> </div>
+        <div id="likes-go-here"></div>
     </div>
 
     <!----------------------------------------------->
@@ -100,9 +101,7 @@
                     $("#details-go-here").append("<h1> " + coord + "</h1>");
                     $("#details-go-here").append("<a href='" + url + "' > " + url );
                     var likeid="like"+id;
-                   // $("#details-go-here").append("<h1 id='" + likeid+"' > CLICK HERE TO LIKE </h1>");
-                    $("#details-go-here").append("<h1 id='" + ${likeid} + " > CLICK HERE TO LIKE </h1>");
-
+                    $("#details-go-here").append("<h1 id='" + likeid+"' > CLICK HERE TO LIKE </h1>");
                     addLikeListener(id, likeid);  
                 })
         }
@@ -118,8 +117,21 @@
                 })
                 .then(function(){
                     console.log ("incremented the like field!");
+                    showLikes(id);
                 })
             })
+        }
+
+        // show likes field of the doc with "id"
+        function showLikes(itemid) {
+            db.collection("webcams")
+                .doc(itemid)
+                .get()
+                .then(function (doc) {
+                    console.log(doc.data().fields.name);
+                    var likes = doc.data().likes;
+                    document.getElementById("likes-go-here").innerHTML="<h1>" + likes + "</h1>";
+                })
         }
 
     </script>
