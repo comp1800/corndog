@@ -88,9 +88,12 @@
                     snapcollection.forEach(function (doc) {
                         //console.log(doc.data());
                         //console.log(doc.data().fields.name);
-                        var id = doc.id;
+                        var id = doc.id;  //document id of that webcam
                         var name = doc.data().fields.name;
-                        $("#webcams-go-here").append("<p id='" + id + "'>" + name + "</p>");
+                        var str = '<p> ${name} </p>';
+                        console.log(str);
+                        //$('#webcams-go-here').append($('<p id = ${id}> ${name} </p>'));
+                        //$("#webcams-go-here").append("<p id='" + id + "'>" + name + "</p>");
                         addWebcamListener(id);
                     })
                 })
